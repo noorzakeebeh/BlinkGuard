@@ -1,48 +1,32 @@
-# BlinkGuard
+# 👁️ BlinkGuard - Desktop Eye Blink & Fatigue Tracking Application
 
-تطبيق سطح مكتب يراقب معدل الرَّمش لديك عبر الكاميرا (محليًا بالكامل، بدون رفع أي بيانات)
-وينبهك بلطف عند الحاجة للرَّمش أو أخذ استراحة.
+**BlinkGuard** is a real-time computer vision desktop application built with Python. It tracks eye blinks, monitors blink rates, and detects signs of fatigue or prolonged eye strain using facial landmark detection.
 
-## المتطلبات
-- Python 3.10+
-- كاميرا ويب
+---
 
-## التثبيت
-```bash
-cd blinkguard
-pip install -r requirements.txt
-```
+## 🚀 Features
 
-> ملاحظة مهمة: تم تثبيت إصدار `mediapipe==0.10.13` تحديدًا في `requirements.txt`
-> لأن الإصدارات الأحدث أزالت واجهة `solutions.face_mesh` القديمة واستبدلتها بواجهة
-> Tasks التي تتطلب تحميل ملف نموذج خارجي. هذا الإصدار يعمل محليًا بالكامل بدون أي تحميل.
+* **Real-time Face & Eye Detection**: Uses MediaPipe's Face Mesh to track facial landmarks efficiently.
+* **Blink Rate Monitoring**: Computes eye aspect ratio (EAR) and counts blinks per minute.
+* **System Tray Operation**: Minimizes seamlessly to the system tray for uninterrupted background monitoring.
+* **Low Latency & High Performance**: Optimized with OpenCV and DirectShow for minimal webcam latency.
 
-## التشغيل
-```bash
-python main.py
-```
+---
 
-عند أول تشغيل ستظهر شاشات التعريف (الترحيب، الخصوصية، اختبار الكاميرا، المعايرة).
-بعدها يبدأ التطبيق بالمراقبة في الخلفية، ويمكن تصغيره إلى شريط النظام (System Tray)
-مع استمرار المراقبة.
+## 🛠️ Tech Stack & Requirements
 
-## البنية
-```
-app/
-  config.py              ثوابت وإعدادات افتراضية
-  core/                  منطق الرؤية الحاسوبية والإحصاءات (بدون واجهة)
-  data/                  قاعدة بيانات SQLite وإدارة الإعدادات
-  workers/               خيوط المعالجة الخلفية (QThread)
-  ui/                    نوافذ ولوحات وواجهة PySide6
-main.py                  نقطة تشغيل التطبيق
-requirements.txt
-```
+* **Language**: Python 3.11+
+* **Core Libraries**:
+  * `opencv-python` (Webcam video capture & frame processing)
+  * `mediapipe` (Facial landmark mesh estimation)
+  * `numpy` (Mathematical computations)
+  * `PyQt5` / `tkinter` (Desktop UI components)
 
-## الخصوصية
-لا يتم حفظ أو رفع أي صورة أو فيديو من الكاميرا في أي وقت. يُعالَج كل إطار محليًا
-لاستخراج قيمة رقمية (نسبة انفتاح العين) ثم يُهمَل فورًا. التفاصيل الكاملة متاحة
-داخل التطبيق من صفحة "Privacy".
+---
 
-## تنويه صحي
-BlinkGuard أداة للعادات الصحية والتذكير فقط، وليست جهازًا طبيًا، ولا تُشخّص أو
-تضمن الوقاية من أي مشكلة في العين.
+## 📥 Installation & Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone [https://github.com/noorzakeebeh/BlinkGuard.git](https://github.com/noorzakeebeh/BlinkGuard.git)
+   cd BlinkGuard
